@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-beige: #E3E3DE;
+    --color-secondarybtn: #5C6672;
+  }
+  
+  html {
+    font-family: 'Raleway', 'Times New Roman', Times, serif;
+  }
+  
+  body {
+    font-family: 'Raleway', 'Times New Roman', Times, serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+}
+
+@layer utilities {
+  .bg-beige {
+    background-color: #E3E3DE;
+  }
+  .text-beige {
+    color: #E3E3DE;
+  }
+  .bg-secondarybtn {
+    background-color: #5C6672;
+  }
+  .text-secondarybtn {
+    color: #5C6672;
+  }
+  
+  /* Font utility třídy */
+  .font-raleway {
+    font-family: 'Raleway';
+  }
+  .font-source-serif {
+    font-family: 'Source Serif 4', serif;
+  }
+}
+
+
+  .bg-radial-gradient {
+    background: #000000;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.69) 0%, rgba(237, 221, 83, 0) 100%);
+  }

@@ -1,0 +1,86 @@
+---
+import PrimaryBtn from '../components/PrimaryBtn.astro';
+import SecondaryBtn from '../components/SecondaryBtn.astro';
+import { Image } from 'astro:assets';
+import salonInterior from '../assets/salon-interior.jpg'; // Přidejte obrázek salonu
+---
+
+<section class="mx-4 sm:mx-12 relative h-[90vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-radial-gradient">
+  <!-- Background Image -->
+  <div class="absolute inset-0 -z-10">
+    <Image 
+      src={salonInterior}
+      alt="Interiér ARS Salon"
+      class="w-full h-full object-cover"
+      width={1920}
+      height={1080}
+      quality={90}
+    />
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center text-white max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-8">
+      
+      <!-- Main Title -->
+      <h2 class="text-5xl sm:text-6xl lg:text-7xl font-light tracking-wide leading-tight">
+        S ČÍM VÁM POMOHU
+      </h2>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mt-12">
+        
+        <!-- Permanentní obočí -->
+        <div class="text-center space-y-3">
+          <h3 class="text-lg sm:text-xl font-light tracking-wide uppercase">
+            PERMANENTNÍ OBOČÍ
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed opacity-90 font-light">
+            Jemné, přirozené tahy,<br>
+            které zvýrazní váš pohled.
+          </p>
+        </div>
+
+        <!-- Permanentní rty -->
+        <div class="text-center space-y-3">
+          <h3 class="text-lg sm:text-xl tracking-wide uppercase font-light">
+            PERMANENTNÍ RTY
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed opacity-90 font-light">
+            Perfektní tvar a barva bez<br>
+            každodenní námahy
+          </p>
+        </div>
+
+        <!-- Permanentní linky -->
+        <div class="text-center space-y-3">
+          <h3 class="text-lg sm:text-xl font-light tracking-wide uppercase">
+            PERMANENTNÍ LINKY
+          </h3>
+          <p class="text-sm sm:text-base leading-relaxed opacity-90 font-light">
+            Elegantní zvýraznění očí<br>
+            pro každou příležitost
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex flex-col sm:flex-col gap-4 justify-center items-center pt-6">
+        <PrimaryBtn 
+          text="CENÍK"
+          href="/cenik"
+          size="md"
+        />
+        <SecondaryBtn 
+          text="DALŠÍ SLUŽBY"
+          href="/sluzby"
+          size="md"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>

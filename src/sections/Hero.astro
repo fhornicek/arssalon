@@ -1,0 +1,58 @@
+---
+const herobackground = `/ars-salon/videos/herobackground-crop.webm`
+const herobackgroundMp4 = `/ars-salon/videos/herobackground-crop.mp4`
+const heroFallbackImage = `/ars-salon/videos/herobackground.jpg`
+import PrimaryBtn from "../components/PrimaryBtn.astro"
+---
+
+<section class="relative h-[90vh] overflow-hidden flex items-center justify-center">
+  <!-- Video pozadí -->
+  <div class="absolute inset-0 -z-10">
+    <video 
+      class="w-full h-full object-cover" 
+      autoplay 
+      muted 
+      loop 
+      playsinline
+    >
+      <source src={herobackgroundMp4} type="video/mp4">
+      <source src={herobackground} type="video/webm">
+      <!-- Fallback obrázek pro prohlížeče nepodporující video -->
+      <img src={heroFallbackImage} alt="Hero background" class="w-full h-full object-cover">
+    </video>
+
+    <div class="absolute bg-radial-gradient bg-black/40 inset-0 bg-sa z-10"></div>
+  </div>
+  
+  <!-- Hero obsah -->
+  <div class="relative z-20 text-center text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-6">
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light tracking-wide leading-tight">
+        KRÁSA V ROVNOVÁZE.
+      </h1>
+      <p class="text-lg sm:text-xl lg:text-2xl opacity-95 leading-relaxed mx-auto">
+        PERMANENTNÍ MAKE-UP OBOČÍ, RTŮ A LINEK S JISTOTOU DLOUHOTELETÝCH ZKUŠENOSTÍ.
+      </p>
+      <div class="pt-4 flex justify-center">
+        <PrimaryBtn text="REZERVOVAT TERMÍN" size="lg" href="/rezervace"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Fallback pozadí pro případ kdy video nelze přehrát */
+  section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/videos/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -20;
+  }
+</style>

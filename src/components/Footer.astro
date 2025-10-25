@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+---
+
+<footer class="bg-secondarybtn text-white py-12 lg:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Logo & About -->
+      <div class="space-y-4">
+        <Image 
+          src={logo} 
+          alt="ARS Salon Logo" 
+          class="h-12 w-auto" 
+          width={120}
+          height={48}
+        />
+        <p class="text-sm leading-relaxed opacity-90 font-light">
+          Permanentní make-up s více než 30letými zkušenostmi. Preciznost, přirozenost a harmonie rysů.
+        </p>
+      </div>
+
+      <!-- Kontakt -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-medium uppercase tracking-wide font-source-serif">
+          KONTAKT
+        </h3>
+        <div class="space-y-2 text-sm">
+          <p class="font-light">
+            Obchodní 15086<br>
+            686 01 Uherské Hradiště 1
+          </p>
+          <a href="tel:+420602516612" class="block hover:text-beige transition-colors duration-300 font-light">
+            +420 602 516 612
+          </a>
+          <a href="mailto:icechmankova@gmail.com" class="block hover:text-beige transition-colors duration-300 font-light">
+            icechmankova@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Služby -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-medium uppercase tracking-wide font-source-serif">
+          SLUŽBY
+        </h3>
+        <div class="space-y-2 text-sm">
+          <a href="/sluzby" class="block hover:text-beige transition-colors duration-300 font-light">
+            Permanentní obočí
+          </a>
+          <a href="/sluzby" class="block hover:text-beige transition-colors duration-300 font-light">
+            Permanentní rty
+          </a>
+          <a href="/sluzby" class="block hover:text-beige transition-colors duration-300 font-light">
+            Permanentní linky
+          </a>
+          <a href="/cenik" class="block hover:text-beige transition-colors duration-300 font-light">
+            Ceník
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigace -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-medium uppercase tracking-wide font-source-serif">
+          NAVIGACE
+        </h3>
+        <div class="space-y-2 text-sm">
+          <a href="/" class="block hover:text-beige transition-colors duration-300 font-light">
+            Domů
+          </a>
+          <a href="/o-mne" class="block hover:text-beige transition-colors duration-300 font-light">
+            O mně
+          </a>
+          <a href="/galerie" class="block hover:text-beige transition-colors duration-300 font-light">
+            Galerie
+          </a>
+          <a href="/kontakt" class="block hover:text-beige transition-colors duration-300 font-light">
+            Kontakt
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="border-t border-white/20 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
+      <p class="text-sm opacity-75 font-light text-center sm:text-left">
+        © 2025 ARS Salon. Všechna práva vyhrazena.
+      </p>
+      <div class="flex space-x-6 mt-4 sm:mt-0">
+        <a href="/ochrana-osobnich-udaju" class="text-sm hover:text-beige transition-colors duration-300 font-light">
+          Ochrana osobních údajů
+        </a>
+        <a href="/obchodni-podminky" class="text-sm hover:text-beige transition-colors duration-300 font-light">
+          Obchodní podmínky
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

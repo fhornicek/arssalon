@@ -1,0 +1,51 @@
+---
+export interface Props {
+  text: string;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: string;
+  disabled?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { 
+  text, 
+  href, 
+  type = 'button', 
+  onClick, 
+  disabled = false, 
+  size = 'md',
+  class: additionalClass = '' 
+} = Astro.props;
+
+// Velikosti tlačítka s fixní šířkou - OPRAVENÉ validní Tailwind třídy
+const sizeClasses = {
+  sm: 'px-6 py-2.5 text-sm w-48',      // 192px šířka
+  md: 'px-8 py-3 text-base w-56',      // 224px šířka  
+  lg: 'px-12 py-4 text-lg w-64'        // 256px šířka
+};
+
+const baseClasses = `bg-white text-black font-medium tracking-wide transition-all duration-300 hover:cursor-pointer hover:bg-opacity-90 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/30 whitespace-nowrap text-center flex items-center justify-center ${sizeClasses[size]} ${additionalClass}`;
+
+const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed hover:transform-none hover:shadow-none' : '';
+---
+
+{href ? (
+  <a 
+    href={href} 
+    class={`${baseClasses} ${disabledClasses} inline-flex no-underline`}
+    aria-disabled={disabled}
+  >
+    {text}
+  </a>
+) : (
+  <button 
+    type={type}
+    onclick={onClick}
+    disabled={disabled}
+    class={`${baseClasses} ${disabledClasses}`}
+  >
+    {text}
+  </button>
+)}

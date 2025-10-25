@@ -1,0 +1,110 @@
+---
+export interface Props {
+  animation?: 'fadeIn' | 'slideUp' | 'slideLeft' | 'slideRight' | 'scaleUp';
+  delay?: number;
+  duration?: number;
+  class?: string;
+}
+
+const { 
+  animation = 'fadeIn', 
+  delay = 0, 
+  duration = 1000,
+  class: className = '' 
+} = Astro.props;
+---
+
+<div 
+  class={`scroll-animated ${animation} ${className}`}
+  data-delay={delay}
+  data-duration={duration}
+>
+  <slot />
+</div>
+
+<style>
+  .scroll-animated {
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-animated.animate {
+    opacity: 1;
+  }
+
+  /* Fade In */
+  .fadeIn {
+    opacity: 0;
+  }
+
+  .fadeIn.animate {
+    opacity: 1;
+  }
+
+  /* Slide Up */
+  .slideUp {
+    transform: translateY(50px);
+  }
+
+  .slideUp.animate {
+    transform: translateY(0);
+  }
+
+  /* Slide Left */
+  .slideLeft {
+    transform: translateX(-50px);
+  }
+
+  .slideLeft.animate {
+    transform: translateX(0);
+  }
+
+  /* Slide Right */
+  .slideRight {
+    transform: translateX(50px);
+  }
+
+  .slideRight.animate {
+    transform: translateX(0);
+  }
+
+  /* Scale Up */
+  .scaleUp {
+    transform: scale(0.9);
+  }
+
+  .scaleUp.animate {
+    transform: scale(1);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const animatedElements = document.querySelectorAll('.scroll-animated');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target as HTMLElement;
+          const delay = parseInt(element.getAttribute('data-delay') || '0');
+          const duration = parseInt(element.getAttribute('data-duration') || '800');
+          
+          // Nastavíme duration
+          element.style.transitionDuration = `${duration}ms`;
+          
+          setTimeout(() => {
+            element.classList.add('animate');
+          }, delay);
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    animatedElements.forEach((el) => observer.observe(el));
+  });
+</script>

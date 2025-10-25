@@ -1,0 +1,51 @@
+---
+export interface Props {
+  text: string;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: string;
+  disabled?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { 
+  text, 
+  href, 
+  type = 'button', 
+  onClick, 
+  disabled = false, 
+  size = 'md',
+  class: additionalClass = '' 
+} = Astro.props;
+
+
+const sizeClasses = {
+  sm: 'px-6 py-2.5 text-sm w-48',      // 192px šířka
+  md: 'px-8 py-3 text-base w-56',      // 224px šířka  
+  lg: 'px-12 py-4 text-lg w-64'        // 256px šířka
+};
+
+const baseClasses = `bg-secondarybtn text-white font-light tracking-wide transition-all duration-300 hover:cursor-pointer hover:bg-secondarybtn hover:text-white hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20 ${sizeClasses[size]} ${additionalClass}`;
+
+const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed hover:transform-none hover:shadow-none hover:bg-transparent hover:text-secondarybtn' : '';
+---
+
+{href ? (
+  <a 
+    href={href} 
+    class={`${baseClasses} ${disabledClasses} inline-block text-center no-underline`}
+    aria-disabled={disabled}
+  >
+    {text}
+  </a>
+) : (
+  <button 
+    type={type}
+    onclick={onClick}
+    disabled={disabled}
+    class={`${baseClasses} ${disabledClasses}`}
+  >
+    {text}
+  </button>
+)}
